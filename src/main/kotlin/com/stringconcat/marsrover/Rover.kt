@@ -2,23 +2,29 @@ package com.stringconcat.marsrover
 
 class Rover(
     var coordinates: Coordinate,
-    var direction: Direction
-
+    var direction: Direction,
 ) {
+
+    private lateinit var roverMover: RoverMover
+
     fun turnLeft() {
-        TODO("Not yet implemented")
+        direction = roverMover.turn(direction, Turn.LEFT)
     }
 
     fun move() {
-        coordinates = coordinates.incY()
+        coordinates = roverMover.move(direction, coordinates)
     }
 
     fun turnRight() {
-        TODO("Not yet implemented")
+        direction = roverMover.turn(direction, Turn.RIGHT)
     }
 
-    fun direction(): Direction {
-        TODO("Not yet implemented")
+    fun setPlateuCoordinateInfo(
+        xMax: Int,
+        yMax: Int,
+        coordinatesMap: MutableMap<Coordinate, Boolean>
+    ) {
+        roverMover = RoverMover(RoverMoveValidator(xMax, yMax, coordinatesMap))
     }
 
 }

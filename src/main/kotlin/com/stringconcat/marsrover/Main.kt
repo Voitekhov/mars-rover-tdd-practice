@@ -13,6 +13,6 @@ fun main(args: Array<String>) {
     rover.turnRight()
 
     println(rover.coordinates)
-    println(rover.direction())
+    println(rover.direction)
 
 }
